@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+			let url = 'http://localhost:6650/products';
+			let headers = new Headers();
+			let authToken = 'YWRtaW46cGFzc3dvcmQ='
+			
+			headers.append('Authorization', 'Basic ' + authToken);
+			
+            function getUsers() {
+                fetch(url,{
+                    method: 'GET',
+					headers: headers
+                })
+                .then(res => res.json()).then(data => {
+                    //console.log(data);
+                    document.getElementById('user-div').innerHTML = `${JSON.stringify(data)}`
+                })  
+            }
+        </script>
+    </head>
+    <body onload="getUsers()">
+        <div id="user-div">
+
+        </div>
+    </body>
+</html>
